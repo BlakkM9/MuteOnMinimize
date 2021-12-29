@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5B3AF33C-3D1C-46BD-BD7B-07BAB44AD91A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		MuteWhenMinimized\3RD-PARTY = MuteWhenMinimized\3RD-PARTY
+		MuteWhenMinimized\LICENSE = MuteWhenMinimized\LICENSE
+		MuteWhenMinimized\README.md = MuteWhenMinimized\README.md
 	EndProjectSection
 EndProject
 Global
