@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MuteOnMinimize.DataModels
 {
@@ -70,7 +71,16 @@ namespace MuteOnMinimize.DataModels
 
         public static void Save(UserData data)
         {
-            string userDataString = JsonSerializer.Serialize(data);
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                WriteIndented = true,
+                Converters =
+                {
+                    new JsonStringEnumConverter()
+                }
+            };
+
+            string userDataString = JsonSerializer.Serialize(data, options);
             File.WriteAllText(USER_DATA_PATH, userDataString);
         }
     }
