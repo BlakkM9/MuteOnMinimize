@@ -19,6 +19,15 @@ namespace MuteOnMinimize.DataModels
     {
         public const string USER_DATA_PATH = "UserData.json";
 
+        private static readonly JsonSerializerOptions SERIALIZING_OPTIONS = new JsonSerializerOptions()
+        {
+            WriteIndented = true,
+            Converters =
+                {
+                    new JsonStringEnumConverter()
+                }
+        };
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public bool StartWithWindows
@@ -60,7 +69,7 @@ namespace MuteOnMinimize.DataModels
             if (File.Exists(USER_DATA_PATH))
             {
                 string userDataString = File.ReadAllText(USER_DATA_PATH);
-                return JsonSerializer.Deserialize<UserData>(userDataString);
+                return JsonSerializer.Deserialize<UserData>(userDataString, SERIALIZING_OPTIONS);
             }
             else
             {
@@ -71,16 +80,7 @@ namespace MuteOnMinimize.DataModels
 
         public static void Save(UserData data)
         {
-            JsonSerializerOptions options = new JsonSerializerOptions()
-            {
-                WriteIndented = true,
-                Converters =
-                {
-                    new JsonStringEnumConverter()
-                }
-            };
-
-            string userDataString = JsonSerializer.Serialize(data, options);
+            string userDataString = JsonSerializer.Serialize(data, SERIALIZING_OPTIONS);
             File.WriteAllText(USER_DATA_PATH, userDataString);
         }
     }
