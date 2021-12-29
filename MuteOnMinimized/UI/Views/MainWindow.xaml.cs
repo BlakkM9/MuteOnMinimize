@@ -10,6 +10,8 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 using MuteOnMinimize.Utilities;
+using MuteOnMinimize.Interop;
+using static MuteOnMinimize.Interop.FocusManager;
 
 namespace MuteOnMinimize.UI.Views
 {
@@ -49,7 +51,14 @@ namespace MuteOnMinimize.UI.Views
                 if (App.UserData.SavedProcesses.Contains(src.Process.ProcessName))
                 {
                     src.MuteOnFocusLoss = true;
+
+                    ShowWindowCommands state = GetWindowState(pid);
+                    if (state == ShowWindowCommands.Maximized || state == ShowWindowCommands.Normal)
+                    {
+                        src.IsMuted = false;
+                    }
                 }
+
                 AudioSources.Add(src);
             };
 
