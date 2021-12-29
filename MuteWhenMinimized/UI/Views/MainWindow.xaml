@@ -8,7 +8,7 @@
         Closing="WindowClosingHandler"
         Closed="WindowClosedHandler"
         SizeToContent="Width"
-        Height="400"
+        Height="350"
         Title="MuteOnMinimize">
 
     <Window.Resources>
@@ -27,23 +27,40 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Focusable" Value="false"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Process Name" Width="500">
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Process.ProcessName" Click="HeaderClicked" Width="300">
+                                Process Name
+                            </GridViewColumnHeader>
+                        </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <WrapPanel>
                                     <Image Source="{Binding Icon}" Width="16" Height="16" Margin="0 0 4 0"></Image>
-                                    <TextBlock Text="{Binding Process.ProcessName}" Foreground="{Binding IsMuted, Converter={StaticResource boolToColor}}"></TextBlock>
+                                    <TextBlock Text="{Binding Process.ProcessName}"
+                                               Foreground="{Binding IsMuted, Converter={StaticResource boolToColor}}"/>
                                 </WrapPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="PID" DisplayMemberBinding="{Binding Process.Id}"></GridViewColumn>
-                    <GridViewColumn Header="Mute on Focus Loss" x:Name="MuteOnFocusLossCol">
+                    <GridViewColumn DisplayMemberBinding="{Binding Process.Id}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Process.Id" Click="HeaderClicked" Width="75">
+                                PID
+                            </GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="MuteOnFocusLoss" Click="HeaderClicked" Width="150">
+                                Mute on Focus Loss
+                            </GridViewColumnHeader>
+                        </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsChecked="{Binding MuteOnFocusLoss}" HorizontalAlignment="Center"></CheckBox>
