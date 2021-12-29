@@ -1,4 +1,5 @@
-﻿using MuteOnMinimize.DataModels;
+﻿using Hardcodet.Wpf.TaskbarNotification;
+using MuteOnMinimize.DataModels;
 using MuteOnMinimize.Interop;
 using System;
 using System.Diagnostics;
@@ -16,6 +17,8 @@ namespace MuteOnMinimize
         public static readonly string APPLICATION_PATH = Process.GetCurrentProcess().MainModule.FileName;
         public static readonly string APPLICATION_NAME = "MuteOnMinimize";
         public static readonly string ICON_NAME = "MuteOnMinimize.ico";
+
+        private TaskbarIcon _taskbarIcon;
 
         public static UserData UserData { get; private set; }
         public static AudioManager AudioManager { get; private set; }
@@ -38,7 +41,7 @@ namespace MuteOnMinimize
 
         private void InitApp()
         {
-            FindResource("NotifyIcon");
+            _taskbarIcon = (TaskbarIcon)FindResource("NotifyIcon");
             UserData = UserData.Load();
             AudioManager = new AudioManager();
             FocusManager = new FocusManager();
@@ -49,6 +52,7 @@ namespace MuteOnMinimize
         {
             AudioManager?.Dispose();
             FocusManager?.Dispose();
+            _taskbarIcon?.Dispose();
             if (UserData != null)
             {
                 UserData.Save(UserData);
