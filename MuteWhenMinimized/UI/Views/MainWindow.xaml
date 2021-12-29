@@ -15,6 +15,7 @@
         <conv:BoolToColorConverter x:Key="boolToColor"></conv:BoolToColorConverter>
     </Window.Resources>
 
+
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -26,6 +27,7 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Focusable" Value="false"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
@@ -41,7 +43,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="PID" DisplayMemberBinding="{Binding Process.Id}"></GridViewColumn>
-                    <GridViewColumn Header="Mute on Focus Loss">
+                    <GridViewColumn Header="Mute on Focus Loss" x:Name="MuteOnFocusLossCol">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsChecked="{Binding MuteOnFocusLoss}" HorizontalAlignment="Center"></CheckBox>
