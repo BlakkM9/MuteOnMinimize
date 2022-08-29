@@ -10,7 +10,7 @@ It will mute all applications where you check the box when they lose focus (ALT 
 The program was written within a day so the code is not too clean and it is just a very small project.
 Feel free to submit issues, contribute or clone the source code! 
 
-![MuteOnMinimize Screenshot](https://puu.sh/IzkfX/9874511d37.png)
+![MuteOnMinimize Screenshot](https://i.imgur.com/E5asBEO.png)
 
 ### Supported Platforms ###
 - Windows 10
