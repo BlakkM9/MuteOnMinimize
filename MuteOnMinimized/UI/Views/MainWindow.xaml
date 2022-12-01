@@ -32,9 +32,9 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn>
+                    <GridViewColumn Width="300">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Process.ProcessName" Click="HeaderClicked" Width="300">
+                            <GridViewColumnHeader Tag="Process.ProcessName" Click="HeaderClicked">
                                 Process Name
                             </GridViewColumnHeader>
                         </GridViewColumn.Header>
@@ -48,16 +48,16 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Process.Id}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Process.Id}" Width="75">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Process.Id" Click="HeaderClicked" Width="75">
+                            <GridViewColumnHeader Tag="Process.Id" Click="HeaderClicked">
                                 PID
                             </GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn>
+                    <GridViewColumn Width="150">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="MuteOnFocusLoss" Click="HeaderClicked" Width="150">
+                            <GridViewColumnHeader Tag="MuteOnFocusLoss" Click="HeaderClicked">
                                 Mute on Focus Loss
                             </GridViewColumnHeader>
                         </GridViewColumn.Header>
