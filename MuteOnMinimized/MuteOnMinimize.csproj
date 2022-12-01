@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy $(ProjectDir)MuteOnMinimize.ico $(TargetDir) /F /R /Y /I" />
+    <Exec Command="xcopy &quot;$(ProjectDir)MuteOnMinimize.ico&quot; &quot;$(TargetDir)&quot; /y /i&#xD;&#xA;xcopy &quot;$(SolutionDir)3RD-PARTY&quot; &quot;$(TargetDir)&quot; /y /i&#xD;&#xA;xcopy &quot;$(SolutionDir)LICENSE&quot; &quot;$(TargetDir)&quot; /y /i" />
   </Target>
 
 </Project>
