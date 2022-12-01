@@ -34,8 +34,12 @@ namespace MuteOnMinimize.UI.Views
             sourceListView.ItemsSource = AudioSources;
 
             startWithWindowsCheckBox.DataContext = App.UserData;
+            startMinimizedCheckBox.DataContext = App.UserData;
+
+            if (App.UserData.StartMinimized) { Hide(); }
 
             App.FocusManager.FocusChanged += FocusChangedHandler;
+
 
             InitAudioManager();
         }

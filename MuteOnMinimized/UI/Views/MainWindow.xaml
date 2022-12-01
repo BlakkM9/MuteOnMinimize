@@ -71,9 +71,27 @@
             </ListView.View>
         </ListView>
 
-        <WrapPanel Grid.Row="1" Margin="0 10 0 0">
-            <CheckBox x:Name="startWithWindowsCheckBox" Margin="0 0 4 0" IsChecked="{Binding StartWithWindows}"></CheckBox>
-            <TextBlock Text="Start with Windows"></TextBlock>
+        <WrapPanel Grid.Row="1" Margin="0 10 0 0" Orientation="Vertical">
+            <CheckBox x:Name="startMinimizedCheckBox"
+                      Content="Start minimized"
+                      Margin="0 0 4 0"
+                      IsChecked="{Binding StartMinimized}">
+                <CheckBox.Resources>
+                    <Style TargetType="{x:Type Path}">
+                        <Setter Property="FlowDirection" Value="LeftToRight" />
+                    </Style>
+                </CheckBox.Resources>
+            </CheckBox>
+            <CheckBox x:Name="startWithWindowsCheckBox"
+                      Content="Start with Windows"
+                      Margin="0 0 4 0"
+                      IsChecked="{Binding StartWithWindows}">
+                <CheckBox.Resources>
+                    <Style TargetType="{x:Type Path}">
+                        <Setter Property="FlowDirection" Value="LeftToRight" />
+                    </Style>
+                </CheckBox.Resources>
+            </CheckBox>
         </WrapPanel>
     </Grid>
 </Window>

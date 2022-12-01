@@ -22,10 +22,7 @@ namespace MuteOnMinimize.DataModels
         private static readonly JsonSerializerOptions SERIALIZING_OPTIONS = new JsonSerializerOptions()
         {
             WriteIndented = true,
-            Converters =
-                {
-                    new JsonStringEnumConverter()
-                }
+            Converters = { new JsonStringEnumConverter() }
         };
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -51,16 +48,43 @@ namespace MuteOnMinimize.DataModels
         }
         private bool _startWithWindows;
 
-        public ExitChoice ExitChoice { get; set; }
+        public bool StartMinimized
+        {
+            get => _startMinimized;
+            set
+            {
+                _startMinimized = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(StartMinimized)));
+            }
+        }
+        private bool _startMinimized;
+
+        public ExitChoice ExitChoice
+        {
+            get => _exitChoice;
+            set
+            {
+                _exitChoice = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ExitChoice)));
+            }
+        }
+        private ExitChoice _exitChoice;
 
         public HashSet<string> SavedProcesses { get; set; }
 
 
+        /// <summary>
+        /// Do not use to load <see cref="UserData"/>. Use <see cref="Load"/> instead.
+        /// </summary>
         public UserData()
         {
             StartWithWindows = false;
+            StartMinimized = false;
             ExitChoice = ExitChoice.None;
             SavedProcesses = new HashSet<string>();
+
+            // Save whenever user data changed
+            PropertyChanged += (s, e) => Save();
         }
 
 
@@ -78,9 +102,9 @@ namespace MuteOnMinimize.DataModels
         }
 
 
-        public static void Save(UserData data)
+        private void Save()
         {
-            string userDataString = JsonSerializer.Serialize(data, SERIALIZING_OPTIONS);
+            string userDataString = JsonSerializer.Serialize(this, SERIALIZING_OPTIONS);
             File.WriteAllText(USER_DATA_PATH, userDataString);
         }
     }
