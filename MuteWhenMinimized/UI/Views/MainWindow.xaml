@@ -1,0 +1,60 @@
+﻿<Window x:Class="MuteOnMinimize.UI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:MuteOnMinimize.UI.Converters"
+        mc:Ignorable="d"
+        Closing="WindowClosingHandler"
+        Closed="WindowClosedHandler"
+        SizeToContent="Width"
+        Height="400"
+        Title="MuteOnMinimize">
+
+    <Window.Resources>
+        <conv:BoolToColorConverter x:Key="boolToColor"></conv:BoolToColorConverter>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListView Name="sourceListView" Grid.Row="0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="false"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Process Name" Width="500">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <Image Source="{Binding Icon}" Width="16" Height="16" Margin="0 0 4 0"></Image>
+                                    <TextBlock Text="{Binding Process.ProcessName}" Foreground="{Binding IsMuted, Converter={StaticResource boolToColor}}"></TextBlock>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="PID" DisplayMemberBinding="{Binding Process.Id}"></GridViewColumn>
+                    <GridViewColumn Header="Mute on Focus Loss">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding MuteOnFocusLoss}" HorizontalAlignment="Center"></CheckBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <WrapPanel Grid.Row="1" Margin="0 10 0 0">
+            <CheckBox x:Name="startWithWindowsCheckBox" Margin="0 0 4 0" IsChecked="{Binding StartWithWindows}"></CheckBox>
+            <TextBlock Text="Start with Windows"></TextBlock>
+        </WrapPanel>
+    </Grid>
+</Window>
