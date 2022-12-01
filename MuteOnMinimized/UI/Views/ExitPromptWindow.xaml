@@ -22,8 +22,15 @@
             </Grid.ColumnDefinitions>
 
             <WrapPanel Grid.Column="0">
-                <CheckBox x:Name="saveDecision" Margin="0 0 4 0" IsChecked="{Binding StartWithWindows}"></CheckBox>
-                <TextBlock Text="Don't ask again"></TextBlock>
+                <CheckBox x:Name="saveDecision"
+                          Content="Don't ask again"
+                          Margin="0 0 4 0">
+                    <CheckBox.Resources>
+                        <Style TargetType="{x:Type Path}">
+                            <Setter Property="FlowDirection" Value="LeftToRight" />
+                        </Style>
+                    </CheckBox.Resources>
+                </CheckBox>
             </WrapPanel>
             <Button Grid.Column="1" Margin="0 0 5 0" Width="60" Height="20" Content="To Tray" Click="ToTrayClicked"></Button>
             <Button Grid.Column="2" Width="60" Height="20" Content="Exit" Click="ExitClicked"></Button>

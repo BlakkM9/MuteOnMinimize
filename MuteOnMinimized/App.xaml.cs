@@ -31,7 +31,7 @@ namespace MuteOnMinimize
             if (Process.GetProcessesByName(thisProc.ProcessName).Length > 1 && !e.Args.Contains("-multinstance"))
             {
                 MessageBox.Show("Application is already running.");
-                Current.Shutdown();
+                Shutdown();
                 return;
             }
 
@@ -53,10 +53,6 @@ namespace MuteOnMinimize
             AudioManager?.Dispose();
             FocusManager?.Dispose();
             _taskbarIcon?.Dispose();
-            if (UserData != null)
-            {
-                UserData.Save(UserData);
-            }
         }
 
 
