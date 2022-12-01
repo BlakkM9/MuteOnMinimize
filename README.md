@@ -18,9 +18,9 @@ Feel free to submit issues, contribute or clone the source code!
 It might work on Windows 7, 8 and 11 aswell but I can't confirm that myself. Hit me up if you can confirm that for me!
 
 ### Installation ###
-- Download latest release [here](https://github.com/BlakkM9/MuteOnMinimize/releases/latest/download/MuteOnMinimize.zip)
-- Extract the archive at your desired location
-- Start program by clicking "MuteOnMinimize.exe" in root folder (executable file).
+1. Download latest release [here](https://github.com/BlakkM9/MuteOnMinimize/releases/latest/download/MuteOnMinimize.zip)
+2. Extract the archive at your desired location
+3. Start program by clicking "MuteOnMinimize.exe" in root folder (executable file).
 
 ### Usage ###
 Start the program you want to mute on focus loss and wait for it to pop up in the program, then put the tick in the checkbox in the "Mute On Focus Loss" column of your program.
