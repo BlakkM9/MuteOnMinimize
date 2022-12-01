@@ -16,7 +16,7 @@ Feel free to submit issues, contribute or clone the source code!
 It might work on Windows 7, 8 and 11 aswell but I can't confirm that myself. Hit me up if you can confirm that for me!
 
 ### Installation ###
-- Download latest release [here](https://github.com/BlakkM9/MuteOnMinimize/releases/download/latest/MuteOnMinimize.zip)
+- Download latest release [here](https://github.com/BlakkM9/MuteOnMinimize/releases/latest/download/MuteOnMinimize.zip)
 - Extract the archive at your desired location
 - Start program with "MuteOnMinimize.exe" in root folder.
 
