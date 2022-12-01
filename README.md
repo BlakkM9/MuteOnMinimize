@@ -10,20 +10,26 @@ It will mute all applications where you check the box when they lose focus (ALT 
 The program was written within a day so the code is not too clean and it is just a very small project.
 Feel free to submit issues, contribute or clone the source code! 
 
+![MuteOnMinimize Screenshot](https://i.imgur.com/E5asBEO.png)
+
 ### Supported Platforms ###
 - Windows 10
 
 It might work on Windows 7, 8 and 11 aswell but I can't confirm that myself. Hit me up if you can confirm that for me!
 
 ### Installation ###
-- Download latest release [here](https://github.com/BlakkM9/MuteOnMinimize/releases/latest/download/MuteOnMinimize.zip)
-- Extract the archive at your desired location
-- Start program with "MuteOnMinimize.exe" in root folder.
+1. Download latest release [here](https://github.com/BlakkM9/MuteOnMinimize/releases/latest/download/MuteOnMinimize.zip)
+2. Extract the archive at your desired location
+3. Start program by clicking "MuteOnMinimize.exe" in root folder (executable file).
 
 ### Usage ###
 Start the program you want to mute on focus loss and wait for it to pop up in the program, then put the tick in the checkbox in the "Mute On Focus Loss" column of your program.
 
 The programs that should be muted on focus loss will be saved and and recognized again if MuteOnMinimize is running.
+
+Gray text means muted program.
+
+"Idle" is System Sound and checking it will mute it permanently.
 
 When you close the program for the first time you can decide if the program should just exit to system tray (so it will still work when you closed it). If you want to shutdown the program after it was closed to system tray, just right or left click on the system tray and press "Exit". To bring the program back up, double click on the tray.
 
