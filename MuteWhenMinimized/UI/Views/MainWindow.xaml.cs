@@ -1,8 +1,15 @@
 ﻿using MuteOnMinimize.DataModels;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
+using System.Collections.Generic;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Media;
+using MuteOnMinimize.Utilities;
 
 namespace MuteOnMinimize.UI.Views
 {
@@ -14,6 +21,8 @@ namespace MuteOnMinimize.UI.Views
 
         public ObservableCollection<AudioSource> AudioSources { get; private set; }
 
+        private GridViewColumnHeader _listViewSortCol;
+        private SortAdorner _listViewSortAdorner;
 
         public MainWindow()
         {
@@ -122,8 +131,28 @@ namespace MuteOnMinimize.UI.Views
                     src.IsMuted = false;
                 }
             }
+        }
 
-            Debug.WriteLine("MainWindowClosed");
+        private void HeaderClicked(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader column = sender as GridViewColumnHeader;
+            string sortBy = column.Tag.ToString();
+            if (_listViewSortCol != null)
+            {
+                AdornerLayer.GetAdornerLayer(_listViewSortCol).Remove(_listViewSortAdorner);
+                sourceListView.Items.SortDescriptions.Clear();
+            }
+
+            ListSortDirection newDir = ListSortDirection.Ascending;
+            if (_listViewSortCol == column && _listViewSortAdorner.Direction == newDir)
+            {
+                newDir = ListSortDirection.Descending;
+            }
+
+            _listViewSortCol = column;
+            _listViewSortAdorner = new SortAdorner(_listViewSortCol, newDir);
+            AdornerLayer.GetAdornerLayer(_listViewSortCol).Add(_listViewSortAdorner);
+            sourceListView.Items.SortDescriptions.Add(new SortDescription(sortBy, newDir));
         }
 
         #endregion
